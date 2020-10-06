@@ -1,0 +1,5 @@
+/home/tomas/Escritorio/webChatFinal/build/CMakeFiles/rebuild_cache.dir
+/home/tomas/Escritorio/webChatFinal/build/CMakeFiles/edit_cache.dir
+/home/tomas/Escritorio/webChatFinal/build/src/CMakeFiles/rebuild_cache.dir
+/home/tomas/Escritorio/webChatFinal/build/src/CMakeFiles/Tomy_capo.dir
+/home/tomas/Escritorio/webChatFinal/build/src/CMakeFiles/edit_cache.dir

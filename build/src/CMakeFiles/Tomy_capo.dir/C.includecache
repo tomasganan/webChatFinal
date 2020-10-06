@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/sql.h
+libwebsockets.h
+-
+mysql/mysql.h
+-
+
+/home/tomas/Escritorio/webChatFinal/src/main.c
+stdio.h
+-
+sql.h
+/home/tomas/Escritorio/webChatFinal/src/sql.h
+
+/home/tomas/Escritorio/webChatFinal/src/sql.c
+limits.h
+-
+stdio.h
+-
+stdlib.h
+-
+sql.h
+/home/tomas/Escritorio/webChatFinal/src/sql.h
+
