@@ -1,6 +1,6 @@
 set(RELEASE_BUILD_FLAGS "-Wall -Wextra")
 
-set(RELEASE_EXTRA_LIBS ${RELEASE_EXTRA_LIBS})
+set(RELEASE_EXTRA_LIBS ${RELEASE_EXTRA_LIBS} "iniparser")
 # RELEASE link flags
 # set(RELEASE_LINK_FLAGS "-pthread")
 

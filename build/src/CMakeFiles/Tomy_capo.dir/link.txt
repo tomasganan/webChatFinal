@@ -1,1 +1,1 @@
-/usr/bin/cc     CMakeFiles/Tomy_capo.dir/main.c.o CMakeFiles/Tomy_capo.dir/sql.c.o  -o ../bin/Tomy_capo -L/usr/lib/x86_64-linux-gnu -lmysqlclient -lpthread -lz -lm -lrt -latomic -lssl -lcrypto -ldl 
+/usr/bin/cc     CMakeFiles/Tomy_capo.dir/main.c.o CMakeFiles/Tomy_capo.dir/sql.c.o  -o ../bin/Tomy_capo ../libs/libiniparser.a -L/usr/lib/x86_64-linux-gnu -lmysqlclient -lpthread -lz -lm -lrt -latomic -lssl -lcrypto -ldl 

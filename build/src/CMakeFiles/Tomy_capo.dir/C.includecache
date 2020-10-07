@@ -12,11 +12,33 @@ libwebsockets.h
 mysql/mysql.h
 -
 
-/home/tomas/Escritorio/webChatFinal/src/main.c
+../libs/./iniparser/src/dictionary.h
 stdio.h
 -
+stdlib.h
+-
+string.h
+-
+unistd.h
+-
+
+../libs/./iniparser/src/iniparser.h
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+dictionary.h
+../libs/./iniparser/src/dictionary.h
+
+/home/tomas/Escritorio/webChatFinal/src/main.c
 sql.h
 /home/tomas/Escritorio/webChatFinal/src/sql.h
+stdio.h
+-
+iniparser.h
+-
 
 /home/tomas/Escritorio/webChatFinal/src/sql.c
 limits.h

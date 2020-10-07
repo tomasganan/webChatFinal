@@ -56,6 +56,17 @@ CMAKE_BINARY_DIR = /home/tomas/Escritorio/webChatFinal/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
@@ -68,16 +79,16 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
 
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
 
-.PHONY : edit_cache/fast
+.PHONY : rebuild_cache/fast
 
 # Special rule for the target list_install_components
 list_install_components:
@@ -101,17 +112,6 @@ install/local/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -126,14 +126,14 @@ install/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/tomas/Escritorio/webChatFinal/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/tomas/Escritorio/webChatFinal/build/CMakeFiles /home/tomas/Escritorio/webChatFinal/build/src/CMakeFiles/progress.marks
-	cd /home/tomas/Escritorio/webChatFinal/build && $(MAKE) -f CMakeFiles/Makefile2 src/all
+	cd /home/tomas/Escritorio/webChatFinal/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/tomas/Escritorio/webChatFinal/build/CMakeFiles /home/tomas/Escritorio/webChatFinal/build/libs/CMakeFiles/progress.marks
+	cd /home/tomas/Escritorio/webChatFinal/build && $(MAKE) -f CMakeFiles/Makefile2 libs/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tomas/Escritorio/webChatFinal/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/tomas/Escritorio/webChatFinal/build && $(MAKE) -f CMakeFiles/Makefile2 src/clean
+	cd /home/tomas/Escritorio/webChatFinal/build && $(MAKE) -f CMakeFiles/Makefile2 libs/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,12 +143,12 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/tomas/Escritorio/webChatFinal/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/tomas/Escritorio/webChatFinal/build && $(MAKE) -f CMakeFiles/Makefile2 libs/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/tomas/Escritorio/webChatFinal/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/tomas/Escritorio/webChatFinal/build && $(MAKE) -f CMakeFiles/Makefile2 libs/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
@@ -157,73 +157,73 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-src/CMakeFiles/Tomy_capo.dir/rule:
-	cd /home/tomas/Escritorio/webChatFinal/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/Tomy_capo.dir/rule
-.PHONY : src/CMakeFiles/Tomy_capo.dir/rule
+libs/CMakeFiles/iniparser.dir/rule:
+	cd /home/tomas/Escritorio/webChatFinal/build && $(MAKE) -f CMakeFiles/Makefile2 libs/CMakeFiles/iniparser.dir/rule
+.PHONY : libs/CMakeFiles/iniparser.dir/rule
 
 # Convenience name for target.
-Tomy_capo: src/CMakeFiles/Tomy_capo.dir/rule
+iniparser: libs/CMakeFiles/iniparser.dir/rule
 
-.PHONY : Tomy_capo
+.PHONY : iniparser
 
 # fast build rule for target.
-Tomy_capo/fast:
-	cd /home/tomas/Escritorio/webChatFinal/build && $(MAKE) -f src/CMakeFiles/Tomy_capo.dir/build.make src/CMakeFiles/Tomy_capo.dir/build
-.PHONY : Tomy_capo/fast
+iniparser/fast:
+	cd /home/tomas/Escritorio/webChatFinal/build && $(MAKE) -f libs/CMakeFiles/iniparser.dir/build.make libs/CMakeFiles/iniparser.dir/build
+.PHONY : iniparser/fast
 
-main.o: main.c.o
+iniparser/src/dictionary.o: iniparser/src/dictionary.c.o
 
-.PHONY : main.o
-
-# target to build an object file
-main.c.o:
-	cd /home/tomas/Escritorio/webChatFinal/build && $(MAKE) -f src/CMakeFiles/Tomy_capo.dir/build.make src/CMakeFiles/Tomy_capo.dir/main.c.o
-.PHONY : main.c.o
-
-main.i: main.c.i
-
-.PHONY : main.i
-
-# target to preprocess a source file
-main.c.i:
-	cd /home/tomas/Escritorio/webChatFinal/build && $(MAKE) -f src/CMakeFiles/Tomy_capo.dir/build.make src/CMakeFiles/Tomy_capo.dir/main.c.i
-.PHONY : main.c.i
-
-main.s: main.c.s
-
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.c.s:
-	cd /home/tomas/Escritorio/webChatFinal/build && $(MAKE) -f src/CMakeFiles/Tomy_capo.dir/build.make src/CMakeFiles/Tomy_capo.dir/main.c.s
-.PHONY : main.c.s
-
-sql.o: sql.c.o
-
-.PHONY : sql.o
+.PHONY : iniparser/src/dictionary.o
 
 # target to build an object file
-sql.c.o:
-	cd /home/tomas/Escritorio/webChatFinal/build && $(MAKE) -f src/CMakeFiles/Tomy_capo.dir/build.make src/CMakeFiles/Tomy_capo.dir/sql.c.o
-.PHONY : sql.c.o
+iniparser/src/dictionary.c.o:
+	cd /home/tomas/Escritorio/webChatFinal/build && $(MAKE) -f libs/CMakeFiles/iniparser.dir/build.make libs/CMakeFiles/iniparser.dir/iniparser/src/dictionary.c.o
+.PHONY : iniparser/src/dictionary.c.o
 
-sql.i: sql.c.i
+iniparser/src/dictionary.i: iniparser/src/dictionary.c.i
 
-.PHONY : sql.i
+.PHONY : iniparser/src/dictionary.i
 
 # target to preprocess a source file
-sql.c.i:
-	cd /home/tomas/Escritorio/webChatFinal/build && $(MAKE) -f src/CMakeFiles/Tomy_capo.dir/build.make src/CMakeFiles/Tomy_capo.dir/sql.c.i
-.PHONY : sql.c.i
+iniparser/src/dictionary.c.i:
+	cd /home/tomas/Escritorio/webChatFinal/build && $(MAKE) -f libs/CMakeFiles/iniparser.dir/build.make libs/CMakeFiles/iniparser.dir/iniparser/src/dictionary.c.i
+.PHONY : iniparser/src/dictionary.c.i
 
-sql.s: sql.c.s
+iniparser/src/dictionary.s: iniparser/src/dictionary.c.s
 
-.PHONY : sql.s
+.PHONY : iniparser/src/dictionary.s
 
 # target to generate assembly for a file
-sql.c.s:
-	cd /home/tomas/Escritorio/webChatFinal/build && $(MAKE) -f src/CMakeFiles/Tomy_capo.dir/build.make src/CMakeFiles/Tomy_capo.dir/sql.c.s
-.PHONY : sql.c.s
+iniparser/src/dictionary.c.s:
+	cd /home/tomas/Escritorio/webChatFinal/build && $(MAKE) -f libs/CMakeFiles/iniparser.dir/build.make libs/CMakeFiles/iniparser.dir/iniparser/src/dictionary.c.s
+.PHONY : iniparser/src/dictionary.c.s
+
+iniparser/src/iniparser.o: iniparser/src/iniparser.c.o
+
+.PHONY : iniparser/src/iniparser.o
+
+# target to build an object file
+iniparser/src/iniparser.c.o:
+	cd /home/tomas/Escritorio/webChatFinal/build && $(MAKE) -f libs/CMakeFiles/iniparser.dir/build.make libs/CMakeFiles/iniparser.dir/iniparser/src/iniparser.c.o
+.PHONY : iniparser/src/iniparser.c.o
+
+iniparser/src/iniparser.i: iniparser/src/iniparser.c.i
+
+.PHONY : iniparser/src/iniparser.i
+
+# target to preprocess a source file
+iniparser/src/iniparser.c.i:
+	cd /home/tomas/Escritorio/webChatFinal/build && $(MAKE) -f libs/CMakeFiles/iniparser.dir/build.make libs/CMakeFiles/iniparser.dir/iniparser/src/iniparser.c.i
+.PHONY : iniparser/src/iniparser.c.i
+
+iniparser/src/iniparser.s: iniparser/src/iniparser.c.s
+
+.PHONY : iniparser/src/iniparser.s
+
+# target to generate assembly for a file
+iniparser/src/iniparser.c.s:
+	cd /home/tomas/Escritorio/webChatFinal/build && $(MAKE) -f libs/CMakeFiles/iniparser.dir/build.make libs/CMakeFiles/iniparser.dir/iniparser/src/iniparser.c.s
+.PHONY : iniparser/src/iniparser.c.s
 
 # Help Target
 help:
@@ -231,19 +231,19 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install/strip"
 	@echo "... edit_cache"
-	@echo "... Tomy_capo"
+	@echo "... install/strip"
+	@echo "... iniparser"
+	@echo "... rebuild_cache"
 	@echo "... list_install_components"
 	@echo "... install/local"
-	@echo "... rebuild_cache"
 	@echo "... install"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
-	@echo "... sql.o"
-	@echo "... sql.i"
-	@echo "... sql.s"
+	@echo "... iniparser/src/dictionary.o"
+	@echo "... iniparser/src/dictionary.i"
+	@echo "... iniparser/src/dictionary.s"
+	@echo "... iniparser/src/iniparser.o"
+	@echo "... iniparser/src/iniparser.i"
+	@echo "... iniparser/src/iniparser.s"
 .PHONY : help
 
 

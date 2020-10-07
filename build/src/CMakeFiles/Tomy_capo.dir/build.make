@@ -116,6 +116,7 @@ Tomy_capo_EXTERNAL_OBJECTS =
 bin/Tomy_capo: src/CMakeFiles/Tomy_capo.dir/main.c.o
 bin/Tomy_capo: src/CMakeFiles/Tomy_capo.dir/sql.c.o
 bin/Tomy_capo: src/CMakeFiles/Tomy_capo.dir/build.make
+bin/Tomy_capo: libs/libiniparser.a
 bin/Tomy_capo: src/CMakeFiles/Tomy_capo.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tomas/Escritorio/webChatFinal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable ../bin/Tomy_capo"
 	cd /home/tomas/Escritorio/webChatFinal/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Tomy_capo.dir/link.txt --verbose=$(VERBOSE)

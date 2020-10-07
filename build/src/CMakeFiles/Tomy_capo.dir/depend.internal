@@ -3,6 +3,8 @@
 
 src/CMakeFiles/Tomy_capo.dir/main.c.o
  ../include/sql.h
+ ../libs/./iniparser/src/dictionary.h
+ ../libs/./iniparser/src/iniparser.h
  /home/tomas/Escritorio/webChatFinal/src/main.c
 src/CMakeFiles/Tomy_capo.dir/sql.c.o
  ../include/sql.h
