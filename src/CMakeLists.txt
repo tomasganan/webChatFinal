@@ -1,6 +1,6 @@
 set(RELEASE_BUILD_FLAGS "-Wall -Wextra")
 
-set(RELEASE_EXTRA_LIBS ${RELEASE_EXTRA_LIBS} "iniparser")
+set(RELEASE_EXTRA_LIBS ${RELEASE_EXTRA_LIBS} "iniparser websockets")
 # RELEASE link flags
 # set(RELEASE_LINK_FLAGS "-pthread")
 
@@ -10,6 +10,8 @@ execute_process(COMMAND mysql_config --cflags
 execute_process(COMMAND mysql_config --libs
     OUTPUT_VARIABLE MYSQL_LIBS OUTPUT_STRIP_TRAILING_WHITESPACE)
 
+find_package(libwebsockets CONFIG REQUIRED)
+list(APPEND CMAKE_MODULE_PATH ${LWS_CMAKE_DIR})
 
 # List all the sources files for compile
 FILE(GLOB RELEASE_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.c)

@@ -39,6 +39,8 @@ stdio.h
 -
 iniparser.h
 -
+libwebsockets.h
+-
 
 /home/tomas/Escritorio/webChatFinal/src/sql.c
 limits.h

@@ -190,6 +190,9 @@ Tomy_capo_SOURCE_DIR:STATIC=/home/tomas/Escritorio/webChatFinal
 //Dependencies for target
 iniparser_LIB_DEPENDS:STATIC=
 
+//The directory containing a CMake configuration file for libwebsockets.
+libwebsockets_DIR:PATH=libwebsockets_DIR-NOTFOUND
+
 
 ########################
 # INTERNAL cache entries
