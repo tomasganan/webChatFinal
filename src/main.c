@@ -47,8 +47,6 @@ void read_data(struct connection *con) {
   // iniparser_freedict(ini);  
 }
 
-
-
 static int callback_http(struct lws *wsi,
                          enum lws_callback_reasons reason, void *user,
                          void *in, size_t len){
@@ -59,17 +57,18 @@ static int callback_dumb_increment(struct lws *wsi,
                                    enum lws_callback_reasons reason,
                                    void *user, void *in, size_t len){
 
-
 switch (reason) {
     case LWS_CALLBACK_PROTOCOL_INIT:
         printf("LWS_CALLBACK_PROTOCOL. \n");
         break;
 
     case LWS_CALLBACK_ESTABLISHED:
+        printf("%s \n",in);
         printf("Conexion establecida. \n");
         break;
     
     case LWS_CALLBACK_CLOSED:
+        printf("%s \n",in);
         printf("LWS_CALLBACK_CLOSED. \n");
         break;
     
@@ -78,16 +77,17 @@ switch (reason) {
         break;
 
     case LWS_CALLBACK_RECEIVE:
+        printf("%s \n",in);
         printf("LWS_CALLBACK_RECEIVE \n");
         break;
     
 
     default:
-        printf("DEFAULT! \n");
+        printf("DEFAULT! %d \n",reason);
         break;
-
+    }
+    return 0;
 }
-                                   }
 // Config. protocolo, nombre identificatorio del socket en el front
 
 static struct lws_protocols protocols[] = {
@@ -119,16 +119,23 @@ int main(int argc, const char **argv) {
 
 
 
-
-
     // Configuracion para la creacion del socketport
+
     struct lws_context *context;
     struct lws_context_creation_info context_info = {
-        .port = con.port, .iface = NULL, .protocols = protocols, .extensions = NULL,
-        .ssl_cert_filepath = NULL, .ssl_private_key_filepath = NULL, .ssl_ca_filepath = NULL,
-        .gid = -1, .uid = -1, .options = 0, NULL, .ka_time = 0, .ka_probes = 0, .ka_interval = 0
+        .port = con.port, 
+        .iface = NULL, .protocols = protocols,
+        .extensions = NULL,
+        .ssl_cert_filepath = NULL,
+        .ssl_private_key_filepath = NULL,
+        .ssl_ca_filepath = NULL,
+        .gid = -1, .uid = -1,
+        .options = 0, NULL,
+        .ka_time = 0,
+        .ka_probes = 0,
+        .ka_interval = 0
     };
-
+    
     context = lws_create_context(&context_info); // Crear conexion/contexto
 
     if (context == NULL) {
@@ -145,10 +152,4 @@ int main(int argc, const char **argv) {
     lws_context_destroy(context); // Destruye la conexion
 
 
-
 }
-
-
-
-
-
