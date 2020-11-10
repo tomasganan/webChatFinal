@@ -21,4 +21,16 @@ int f_truncate();
 
 int update();
 
+char query[MAX_STRING];
+char messagefull[MAX_STRING];
+char query2[MAX_STRING];
+char username[MAX_STRING];
+char iscontact[MAX_STRING];
+char message[MAX_STRING];
+char contact[MAX_STRING];
+
+MYSQL *conn;
+MYSQL_RES *res;
+MYSQL_ROW row;
+
 #endif /* SQL_H */

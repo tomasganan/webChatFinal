@@ -14,6 +14,10 @@ struct connection{
     int port;
 };
 
+/// Funcion Explode
+
+
+
 /// Funcion IniParser
 
 void read_data(struct connection *con) {
@@ -47,41 +51,62 @@ void read_data(struct connection *con) {
   // iniparser_freedict(ini);  
 }
 
+/// Callback HTTP
+
 static int callback_http(struct lws *wsi,
                          enum lws_callback_reasons reason, void *user,
                          void *in, size_t len){
 	return 0;
 }
 
+/// Callback Dumb Increment
+
 static int callback_dumb_increment(struct lws *wsi,
                                    enum lws_callback_reasons reason,
                                    void *user, void *in, size_t len){
+                                       
+long wsi_adress = wsi; // El WSI seria como el puntero a la instancia de un websocket  
+conn = mysql_init(NULL); // Declaracion de variable para la dB
+
+/// Conexion a la base de datos
+
+// if (!mysql_real_connect(conn, server, userdb, password, database, port, NULL, 0)){
+//     fprintf(stderr, "%s\n", mysql_error(conn)); // En caso de error, lo comunica
+//     exit(1);
+// }
 
 switch (reason) {
     case LWS_CALLBACK_PROTOCOL_INIT:
         printf("LWS_CALLBACK_PROTOCOL. \n");
         break;
 
+    /// EStablecer conexión
+
     case LWS_CALLBACK_ESTABLISHED:
-        printf("%s \n",in);
-        printf("Conexion establecida. \n");
+        printf("CONEXION ESTABLECIDA. \n");
         break;
+
+    /// Cerrar conexión
     
     case LWS_CALLBACK_CLOSED:
-        printf("%s \n",in);
-        printf("LWS_CALLBACK_CLOSED. \n");
+        snprintf(query, MAX_STRING, "DELETE FROM users WHERE token=%lu", wsi_adress);
+            if (mysql_query(conn, query)) {
+                    fprintf(stderr, "%s\n", mysql_error(conn));
+            }        
+            reset_contact(len); // Reseteo del contacto
+          printf("FIN DE SESION.\n");
         break;
+
+    ///
     
     case LWS_CALLBACK_SERVER_WRITEABLE:
         printf("LWS_CALLBACK_SERVER_WRITEABLE. \n");
         break;
 
     case LWS_CALLBACK_RECEIVE:
-        printf("%s \n",in);
         printf("LWS_CALLBACK_RECEIVE \n");
         break;
     
-
     default:
         printf("DEFAULT! %d \n",reason);
         break;
@@ -106,6 +131,8 @@ static struct lws_protocols protocols[] = {
     }
 };
 
+// -------------| M A I N | -------------
+
 
 
 int main(int argc, const char **argv) {
@@ -116,6 +143,25 @@ int main(int argc, const char **argv) {
     // printf("server: %s\n userdb: %s\n password: %s\n database: %s\n ip: %s\n port: %d\n", 
     //         con.server, con.userdb, con.password, con.database, con.ip, con.port);
 
+
+
+    // La URL del servidor será: http://localhost:9000
+    conn = mysql_init(NULL);
+   
+    // Conexion a la base de datos
+    if (!mysql_real_connect(conn, con.server, con.userdb, con.password, con.database, con.port, NULL, 0)) {
+        fprintf(stderr, "%s\n", mysql_error(conn));
+        exit(1);
+    }
+
+        snprintf(query, MAX_STRING, "TRUNCATE TABLE users;"); // Eliminacion de todos los user
+    
+    if (mysql_query(conn, query)) {
+        fprintf(stderr, "%s\n", mysql_error(conn));
+        exit(1);
+    }
+
+    mysql_close(conn);
 
 
 
