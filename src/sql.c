@@ -130,21 +130,20 @@ int select_by_name(char *contact){
     exit_code = 1;
   }
 
-  /* Agreagado a la funcion
 
-  res = mysql_store_result(conn);
-  char value[10];
-  char *eptr;
-  long long wsi_long;
+  // res = mysql_store_result(conn);
+  // char value[10];
+  // char *eptr;
+  // long long wsi_long;
   
-  while ((row = mysql_fetch_row(res)) != NULL) {
-    strcpy(value, row[1]);
-    snprintf(from, MAX_STRING, "%s", row[2]);
-    wsi_long = strtoll(value, &eptr, 10);
-  }
-  mysql_free_result(res);
+  // while ((row = mysql_fetch_row(res)) != NULL) {
+  //   strcpy(value, row[1]);
+  //   snprintf(from, MAX_STRING, "%s", row[2]);
+  //   wsi_long = strtoll(value, &eptr, 10);
+  // }
+  // mysql_free_result(res);
 
-  */
+  
 
   return exit_code;
 }
@@ -163,24 +162,24 @@ int select_by_token(long *wsi){
     exit_code = 1;
   }
   
-  /* Agreagado a la funcion
 
-  int len = strlen(mysql_error(conn));
-  long long wsi_long;
-  char *out = NULL;
-  while ((row = mysql_fetch_row(res)) != NULL) {
-    snprintf(messagefull, MAX_STRING, "from:%s:%s", row[2],message);
-    len = strlen(messagefull);
-    snprintf(to, MAX_STRING, "%s", row[2]);
-    out = (char *)malloc(sizeof(char)*(LWS_SEND_BUFFER_PRE_PADDING + len + LWS_SEND_BUFFER_POST_PADDING));
-    // Configuracion del buffer
-    memcpy (out + LWS_SEND_BUFFER_PRE_PADDING, messagefull, len );
-    lws_write(wsi_long,  out + LWS_SEND_BUFFER_PRE_PADDING, len, LWS_WRITE_TEXT);
-    free(out);
-  }
-  mysql_free_result(res);
+
+  // int len = strlen(mysql_error(conn));
+  // long long wsi_long;
+  // char *out = NULL;
+  // while ((row = mysql_fetch_row(res)) != NULL) {
+  //   snprintf(messagefull, MAX_STRING, "from:%s:%s", row[2],message);
+  //   len = strlen(messagefull);
+  //   snprintf(to, MAX_STRING, "%s", row[2]);
+  //   out = (char *)malloc(sizeof(char)*(LWS_SEND_BUFFER_PRE_PADDING + len + LWS_SEND_BUFFER_POST_PADDING));
+  //   // Configuracion del buffer
+  //   memcpy (out + LWS_SEND_BUFFER_PRE_PADDING, messagefull, len );
+  //   lws_write(wsi_long,  out + LWS_SEND_BUFFER_PRE_PADDING, len, LWS_WRITE_TEXT);
+  //   free(out);
+  // }
+  // mysql_free_result(res);
   
-  */
+  
 
   return exit_code;
 }

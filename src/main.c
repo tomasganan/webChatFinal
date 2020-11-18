@@ -65,7 +65,7 @@ send_messages(char *txt) {
   insert_msg(from, to, to_send);
   printf("Message sent: %s\n",to_send);
   // printf("Mensaje a enviarle al usuario, tambien el mismo debe guardarse en la "
-  //        "base de datos para poder tener un backup es el prozimo texto: %s\n",
+  //        "base de datos para poder tener un backup es el proximo texto: %s\n",
   //        to_send);
 }
 
